@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Plugins.Infinity.UI.Components {
+namespace Plugins.Modern.UI.Components {
 	public class ButtonThemeSwitcherComponent : MonoBehaviour {
 		[SerializeField]
 		private Image _button;

@@ -1,11 +1,11 @@
-﻿using Plugins.Infinity.DI.Binding;
-using Plugins.Infinity.UI.Api;
+﻿using Plugins.Modern.DI.Binding;
+using Plugins.Modern.UI.Api;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Plugins.Infinity.UI.App {
-	public class InfinityUIService : IInfinityUIService {
+namespace Plugins.Modern.UI.App {
+	public class ModernUIService : IModernUIService {
 		private readonly Dictionary<Canvas, List<GameObject>> _interfaceVariants = new();
 
 		public void SetupInterfaceVariant<TArg> (GameObject interfaceVariant, Canvas canvas, TArg item = default) {

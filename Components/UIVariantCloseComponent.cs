@@ -1,16 +1,16 @@
-using Plugins.Infinity.DI.Components;
-using Plugins.Infinity.UI.Api;
+using Plugins.Modern.DI.Components;
+using Plugins.Modern.UI.Api;
 using UnityEngine;
 
-namespace Plugins.Infinity.UI.Components {
+namespace Plugins.Modern.UI.Components {
 	public class UIVariantCloseComponent : BaseMonoInjectComponent {
 		[SerializeField]
 		private GameObject _uiVariantRoot;
 		
-		private readonly IInfinityUIService _infinityUIService;
+		private readonly IModernUIService _modernUIService;
 
 		public void CloseUIVariant () {
-			_infinityUIService.RemoveInterfaceVariantFromId(_uiVariantRoot.name);
+			_modernUIService.RemoveInterfaceVariantFromId(_uiVariantRoot.name);
 		}
 	}
 }
