@@ -3,7 +3,7 @@ using Plugins.Modern.UI.Api;
 using UnityEngine;
 
 namespace Plugins.Modern.UI.Components {
-	public class UIVariantCloseComponent : BaseMonoInjectComponent {
+	public class UIVariantCloseComponent : ModernBaseMonoInjectComponent {
 		[SerializeField]
 		private GameObject _uiVariantRoot;
 		

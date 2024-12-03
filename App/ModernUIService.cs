@@ -8,29 +8,29 @@ namespace Plugins.Modern.UI.App {
 	public class ModernUIService : IModernUIService {
 		private readonly Dictionary<Canvas, List<GameObject>> _interfaceVariants = new();
 
-		public void SetupInterfaceVariant<TArg> (GameObject interfaceVariant, Canvas canvas, TArg item = default) {
+		public void SetupForm<TArg> (GameObject form, Canvas canvas, TArg item = default) {
 			if (!_interfaceVariants.ContainsKey(canvas)) _interfaceVariants.Add(canvas, new List<GameObject>());
 
-			if (_interfaceVariants[canvas].Contains(interfaceVariant)) {
-				Debug.LogError($"Instance of {interfaceVariant.name} already exists on {canvas.name}");
+			if (_interfaceVariants[canvas].Contains(form)) {
+				Debug.LogError($"Instance of {form.name} already exists on {canvas.name}");
 				return;
 			}
 
-			var instance = Object.Instantiate(interfaceVariant, canvas.transform);
+			var instance = Object.Instantiate(form, canvas.transform);
 			_interfaceVariants[canvas].Add(instance);
 
-			if (item != null) instance.GetComponentInChildren<ItemBinding<TArg>>().SetItem(item, interfaceVariant.name + "(Clone)");
+			if (item != null) instance.GetComponentInChildren<ModernItemBinding<TArg>>().SetItem(item, form.name + "(Clone)");
 		}
 
-		public void RemoveInterfaceVariant (GameObject interfaceVariant, Canvas canvas) {
+		public void RemoveForm (GameObject form, Canvas canvas) {
 			if (!TryGetInterfaceList(canvas, out var variantsList)) return;
 
-			if (variantsList.All(x => x.name != interfaceVariant.name + "(Clone)")) {
-				Debug.Log($"Instance of {interfaceVariant.name} not found on {canvas.name}");
+			if (variantsList.All(x => x.name != form.name + "(Clone)")) {
+				Debug.Log($"Instance of {form.name} not found on {canvas.name}");
 				return;
 			}
 
-			var instance = _interfaceVariants[canvas].Single(x => x.name == interfaceVariant.name + "(Clone)");
+			var instance = _interfaceVariants[canvas].Single(x => x.name == form.name + "(Clone)");
 			_interfaceVariants[canvas].Remove(instance);
 
 			Object.Destroy(instance);

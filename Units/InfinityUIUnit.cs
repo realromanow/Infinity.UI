@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Plugins.Modern.UI.Units {
 	[CreateAssetMenu(menuName = "Infinity/Units/UIUnit", fileName = "UIUnit")]
-	public class InfinityUIUnit : AppUnit {
-		public override void SetupUnit (AppComponentsRegistry componentsRegistry) {
+	public class InfinityUIUnit : ModernAppUnit {
+		public override void SetupUnit (ModernComponentsRegistry componentsRegistry) {
 			componentsRegistry.Instantiate<ModernUIService>();
 		}
 	}
