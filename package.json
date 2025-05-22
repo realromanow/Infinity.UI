@@ -9,6 +9,6 @@
     "email": "romanow.n.e@icloud.com"
   },
   "dependencies": {
-    "com.infinity.di": "https://github.com/realromanow/Infinity.DI.git"
+    "com.infinity.di": "https://github.com/realromanow/Infinity.DI.git#1.0.1"
   }
 }
