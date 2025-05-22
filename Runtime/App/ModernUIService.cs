@@ -36,35 +36,6 @@ namespace Plugins.Modern.UI.App {
 			Object.Destroy(instance);
 		}
 
-		public void RemoveAllExceptVariant (GameObject interfaceVariant, Canvas canvas) {
-			if (!TryGetInterfaceList(canvas, out var variantsList)) return;
-
-			if (variantsList.All(x => x.name != interfaceVariant.name + "(Clone)")) {
-				Debug.Log($"Instance of {interfaceVariant.name} not found on {canvas.name}");
-				return;
-			}
-
-			variantsList.RemoveAll(x => {
-				if (interfaceVariant.name + "(Clone)" == x.name) return false;
-
-				Object.Destroy(x);
-				return true;
-			});
-		}
-
-		public void RemoveInterfaceVariantFromId (string id) {
-			var targetVariables = _interfaceVariants.Where(keyValuePair => {
-				return keyValuePair.Value.Any(x => x.name == id);
-			}).Select(keyValuePair => keyValuePair.Value);
-
-			foreach (var variable in targetVariables) {
-				var targetVariant = variable.Single(x => x.name == id);
-				Object.Destroy(targetVariant);
-				
-				variable.Remove(targetVariant);
-			}
-		}
-
 		private bool TryGetInterfaceList (Canvas canvas, out List<GameObject> variantsList) {
 			return _interfaceVariants.TryGetValue(canvas, out variantsList);
 		}
